@@ -109,3 +109,27 @@ button[type="submit"] {
     margin-right: 0.5rem;
     cursor: pointer;
 }
+.google-btn {
+    background-color: #4285F4;
+    color: var(--white);
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+    main {
+        flex-direction: row;
+    }
+
+    #taskForm, #taskList {
+        flex: 1;
+    }
+
+    #filterSort {
+        flex-direction: row;
+    }
+}

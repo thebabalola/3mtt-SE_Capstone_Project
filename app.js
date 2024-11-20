@@ -1,5 +1,6 @@
 // Mock data for tasks (replace with actual API calls later)
 let tasks = [];
+let currentUser = null;
 
 // DOM Elements
 const addTaskForm = document.getElementById('addTaskForm');
@@ -7,16 +8,26 @@ const tasksList = document.getElementById('tasks');
 const filterPriority = document.getElementById('filterPriority');
 const sortBy = document.getElementById('sortBy');
 const searchTask = document.getElementById('searchTask');
+const loginBtn = document.getElementById('loginBtn');
+const registerBtn = document.getElementById('registerBtn');
+const logoutBtn = document.getElementById('logoutBtn');
 
 // Event Listeners
 addTaskForm.addEventListener('submit', addTask);
 filterPriority.addEventListener('change', filterAndSortTasks);
 sortBy.addEventListener('change', filterAndSortTasks);
 searchTask.addEventListener('input', filterAndSortTasks);
+loginBtn.addEventListener('click', () => window.location.href = 'login.html');
+registerBtn.addEventListener('click', () => window.location.href = 'register.html');
+logoutBtn.addEventListener('click', logout);
 
 // Functions
 function addTask(e) {
     e.preventDefault();
+    if (!currentUser) {
+        alert('Please login to add tasks');
+        return;
+    }
     const title = document.getElementById('taskTitle').value;
     const description = document.getElementById('taskDescription').value;
     const deadline = document.getElementById('taskDeadline').value;
