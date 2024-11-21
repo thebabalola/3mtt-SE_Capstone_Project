@@ -17,7 +17,18 @@ TaskMaster is a comprehensive task management web application that allows users 
 
 ## File Structure
 
+This file structure accurately represents all the main files we've created for the TaskMaster project, including:
 
+- `frontend/`: Contains all client-side files
+  - HTML files (`*.html`): Define the structure of each page
+  - CSS files (`*.css`): Style the HTML elements
+  - JavaScript files (`*.js`): Provide client-side functionality
+
+- `backend/`: Contains server-side files
+  - `server.js`: The main Node.js server file that handles API requests, authentication, and serves the application
+  - `schema.js`: Defines the database schema for users and tasks
+
+- `README.md`: Provides an overview and documentation for the project
 
 
 ## Setup Instructions
