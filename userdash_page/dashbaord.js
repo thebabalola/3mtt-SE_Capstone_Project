@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         settingsPanel.classList.toggle('open');
     });
 
-    // Dark mode toggle
+    // Dark mode togglen
     darkModeToggle.addEventListener('change', function() {
         document.body.classList.toggle('dark-mode', this.checked);
     });
