@@ -49,7 +49,9 @@ body {
     align-items: center; */
 }
 
-/* Header Styles */
+
+
+/* --- Header Styles ---*/
 header {
     background-color: var(--blue);
     color: var(--white);
@@ -99,7 +101,7 @@ h1, h2 {
 
 
 
-/* Main Content Styles */
+/* --- Main Content Styles ---*/
 main {
     padding: 2rem;
     display: flex;
@@ -185,7 +187,7 @@ button[type="submit"]:hover {
 
 
 
-/* Login and Register Page Styles */
+/* --- Login and Register Page Styles ----*/
 .container {
     width: 100vw;
     height: 100vh;
@@ -217,7 +219,7 @@ button[type="submit"]:hover {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 label {
@@ -270,7 +272,7 @@ input {
 
 
 
-/* Dashboard Styles */
+/* --- Dashboard Styles --- */
 .dashboard-container {
     display: flex;
     flex-direction: column;
@@ -399,7 +401,9 @@ body.dark-mode {
     color: var(--white);
 }
 
-/* Media Queries */
+
+
+/* --- Media Queries --- */
 @media (max-width: 768px) {
     main {
         flex-direction: column;
@@ -411,6 +415,14 @@ body.dark-mode {
 
     #filterSort {
         flex-direction: row;
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 5px;
     }
 
     .dashboard-container {
@@ -429,8 +441,46 @@ body.dark-mode {
     .settings-panel.open {
         right: 0;
     }
+
+    /* Reduce logo & button size */
+    header .logo {
+        font-size: 1.8rem;
+    }
+    nav button {
+        width: 70px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        max-height: none;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    input, textarea, select {
+        font-size: 14px;
+    }
 }
 
 
+@media (max-width: 480px) {
+    header .logo {
+        font-size: 1.5rem;
+    }
 
-/* the new media query*/
+    nav button {
+        width: 70px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+}
