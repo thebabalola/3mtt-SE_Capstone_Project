@@ -55,6 +55,7 @@ header {
     color: var(--white);
     padding: 1rem;
     display: flex;
+    height: 85px;
     justify-content: space-between;
     align-items: center;
 }
@@ -67,6 +68,22 @@ nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    border: 2px solid red;
+}
+
+nav button {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    width: 100px;
+    height: 35px;
+    margin-left: 15px;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+nav button:hover {
+    border: 2px solid white;
 }
 
 header .logo {
@@ -80,13 +97,7 @@ h1, h2 {
     margin: 0;
 }
 
-nav button {
-    background-color: var(--dark-blue);
-    color: var(--white);
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
+
 
 /* Main Content Styles */
 main {
@@ -115,9 +126,11 @@ form {
 }
 
 input, textarea, select, button {
+    font-family: Poppins, Arial, sans-serif;
     padding: 0.5rem;
     border: 1px solid var(--grey);
-    border-radius: 3px;
+    border-radius: 5px;
+    min-height: 35px;
 }
 
 button[type="submit"] {
@@ -127,10 +140,18 @@ button[type="submit"] {
     cursor: pointer;
 }
 
+button[type="submit"]:hover {
+    background-color: var(--dark-blue);
+}
+
 #filterSort {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
+}
+
+#filterSort select {
+    width: 50%;
 }
 
 #tasks {
@@ -162,6 +183,8 @@ button[type="submit"] {
     cursor: pointer;
 }
 
+
+
 /* Login and Register Page Styles */
 .container {
     width: 100vw;
@@ -180,10 +203,11 @@ button[type="submit"] {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.card h1 {
     color: var(--dark-blue);
     text-align: center;
     margin-bottom: 10px;
+    border-bottom: 3px solid #E0E0E0;
 }
 
 .subtitle {
@@ -245,9 +269,11 @@ input {
 }
 
 
+
 /* Dashboard Styles */
 .dashboard-container {
     display: flex;
+    flex-direction: column;
     padding: 1rem;
     gap: 1rem;
 }
@@ -262,7 +288,9 @@ input {
 
 .dashboard-main {
     flex: 2;
+    justify-content: center;
     background-color: var(--white);
+    gap: 100px;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -402,3 +430,7 @@ body.dark-mode {
         right: 0;
     }
 }
+
+
+
+/* the new media query*/

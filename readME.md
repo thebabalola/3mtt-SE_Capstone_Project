@@ -71,7 +71,7 @@ https://github.com/thebabalola/3mtt-SE_Capstone_Project.git
 
 ## Customization
 
-- To change the color scheme, modify the CSS variables in the `:root` selector in both `styles.css` and `dashboard.css`.
+- To change the color scheme, modify the CSS variables in the `:root` selector in the`styles.css` 
 - To add or modify features, edit the respective HTML, CSS, and JavaScript files.
 
 
