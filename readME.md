@@ -91,4 +91,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the 3mtt S.E.
+This project is authorised by the 3mtt S.E Lagos

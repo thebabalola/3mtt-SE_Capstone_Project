@@ -411,7 +411,7 @@ body.dark-mode {
 
 
 
-/* --- Media Queries --- */
+/* ---- Media Queries ---- */
 @media (max-width: 768px) {
     main {
         flex-direction: column;
