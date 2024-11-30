@@ -31,7 +31,7 @@ function handleLogin(email, password) {
     localStorage.setItem('token', 'demo_token');
     alert('Login successful!');
     // Redirect to dashboard
-    window.location.href = 'dashboard.html';
+    window.location.href = '/userdash_page/userdash.html';
 }
 
 function handleRegister(username, email, password, confirmPassword) {
@@ -47,5 +47,5 @@ function handleRegister(username, email, password, confirmPassword) {
     localStorage.setItem('token', 'demo_token');
     alert('Registration successful!');
     // Redirect to dashboard
-    window.location.href = 'dashboard.html';
+    window.location.href = '/userdash_page/userdash.html';
 }
