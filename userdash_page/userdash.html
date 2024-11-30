@@ -3,61 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskMaster Dashboard</title>
-    <link rel="stylesheet" href="./styles.css">
+    <title>Dashboard - TaskMaster</title>
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <div class="logo">TaskMaster</div>
-        <button id="logoutBtn">Logout</button>
-    </nav>
-    <div class="container">
-        <aside>
-            <div class="profile-section">
-                <div class="profile-picture">
-                    <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profilePic">
-                    <button id="editProfilePic"><i class="fas fa-edit"></i></button>
+    <div class="dashboard">
+        <header>
+            <h1 class="logo" href="./index.html">TaskMaster</h1>
+            <nav>
+                <button id="logoutBtn">Logout</button>
+            </nav>
+        </header>
+        
+        <div class="dashboard-container">
+            <aside class="dashboard-aside">
+                <div class="profile-section">
+                    <div class="profile-picture">
+                        <img src="https://via.placeholder.com/150" alt="Profile" id="profilePic">
+                        <button id="editProfilePic" class="edit-profile-pic">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <h2 id="userName">Jane Doe</h2>
+                    <p id="userEmail">jane@example.com</p>
+                    <p id="dateJoined">Joined: <span>May 15, 2023</span></p>
                 </div>
-                <h2 id="userName">John Doe</h2>
-                <p id="userEmail">john@example.com</p>
-                <p id="dateJoined">Joined: <span></span></p>
-            </div>
-            <div class="task-stats">
-                <div class="stat">
-                    <h3>Created Tasks</h3>
-                    <p id="createdTasks">10</p>
+                <div class="task-stats">
+                    <div class="stat">
+                        <h3>Created Tasks</h3>
+                        <p id="createdTasks">0</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Archived Tasks</h3>
+                        <p id="archivedTasks">0</p>
+                    </div>
                 </div>
-                <div class="stat">
-                    <h3>Archived Tasks</h3>
-                    <p id="archivedTasks">5</p>
-                </div>
-            </div>
-        </aside>
-        <main>
-            <section class="tasks-section">
-                <h2>Your Active Tasks</h2>
-                <ul id="activeTaskList">
-                    <!-- Active tasks will be dynamically added here -->
-                </ul>
-            </section>
-            <section class="tasks-section">
-                <h2>Archived Tasks</h2>
-                <ul id="archivedTaskList">
-                    <!-- Archived tasks will be dynamically added here -->
-                </ul>
-            </section>
-        </main>
-    </div>
-    <div class="settings-panel" id="settingsPanel">
-        <h2>Settings</h2>
-        <div class="setting">
-            <label for="darkModeToggle">Dark Mode</label>
-            <input type="checkbox" id="darkModeToggle">
+            </aside>
+            <main class="dashboard-main">
+                <section class="tasks-section">
+                    <h2>Your Active Tasks</h2>
+                    <ul id="activeTaskList" class="task-list"></ul>
+                </section>
+                <section class="tasks-section">
+                    <h2>Archived Tasks</h2>
+                    <ul id="archivedTaskList" class="task-list"></ul>
+                </section>
+            </main>
         </div>
-        <!-- Add more settings here as needed -->
+        <div id="settingsPanel" class="settings-panel">
+            <h2>Settings</h2>
+            <div class="setting">
+                <label for="darkModeToggle">Dark Mode</label>
+                <input type="checkbox" id="darkModeToggle">
+            </div>
+        </div>
+        <button id="settingsBtn" class="floating-btn">
+            <i class="fas fa-cog"></i>
+        </button>
     </div>
-    <button id="settingsBtn" class="floating-btn"><i class="fas fa-cog"></i></button>
     <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
     <script src="dashboard.js"></script>
 </body>

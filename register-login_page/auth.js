@@ -30,8 +30,8 @@ function handleLogin(email, password) {
     // For demo purposes, we'll just set a token in localStorage
     localStorage.setItem('token', 'demo_token');
     alert('Login successful!');
-    // Redirect to main page or dashboard
-    // window.location.href = 'index.html';
+    // Redirect to dashboard
+    window.location.href = 'dashboard.html';
 }
 
 function handleRegister(username, email, password, confirmPassword) {
@@ -46,6 +46,6 @@ function handleRegister(username, email, password, confirmPassword) {
     // For demo purposes, we'll just set a token in localStorage
     localStorage.setItem('token', 'demo_token');
     alert('Registration successful!');
-    // Redirect to main page or dashboard
-    // window.location.href = 'index.html';
+    // Redirect to dashboard
+    window.location.href = 'dashboard.html';
 }
