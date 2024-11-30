@@ -10,7 +10,7 @@
 <body>
     <div class="dashboard">
         <header>
-            <h1 class="logo" href="./index.html">TaskMaster</h1>
+            <h1 class="logo" >TaskMaster</h1>
             <nav>
                 <button id="logoutBtn">Logout</button>
             </nav>
@@ -20,13 +20,13 @@
             <aside class="dashboard-aside">
                 <div class="profile-section">
                     <div class="profile-picture">
-                        <img src="https://via.placeholder.com/150" alt="Profile" id="profilePic">
+                        <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" alt="Profile" id="profilePic">
                         <button id="editProfilePic" class="edit-profile-pic">
                             <i class="fas fa-edit"></i>
                         </button>
                     </div>
-                    <h2 id="userName">Jane Doe</h2>
-                    <p id="userEmail">jane@example.com</p>
+                    <h2 id="userName">User</h2>
+                    <p id="userEmail">user@example.com</p>
                     <p id="dateJoined">Joined: <span>May 15, 2023</span></p>
                 </div>
                 <div class="task-stats">
@@ -40,7 +40,11 @@
                     </div>
                 </div>
             </aside>
+
             <main class="dashboard-main">
+               
+                <a href="/index.html"> <button>CREATE NEW TASK </button></a>
+                
                 <section class="tasks-section">
                     <h2>Your Active Tasks</h2>
                     <ul id="activeTaskList" class="task-list"></ul>
@@ -50,6 +54,7 @@
                     <ul id="archivedTaskList" class="task-list"></ul>
                 </section>
             </main>
+
         </div>
         <div id="settingsPanel" class="settings-panel">
             <h2>Settings</h2>
@@ -63,6 +68,7 @@
         </button>
     </div>
     <input type="file" id="profilePicInput" accept="image/*" style="display: none;">
-    <script src="dashboard.js"></script>
+    
+    <script src="/userdash_page/dashboard.js"></script>
 </body>
 </html>

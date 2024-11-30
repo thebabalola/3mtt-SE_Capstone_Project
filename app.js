@@ -1,6 +1,6 @@
-// Mock data for tasks (replace with actual API calls later)
-let tasks = [];
-let currentUser = null;
+// Mock data for tasks (stored in localStorage)
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 // DOM Elements
 const addTaskForm = document.getElementById('addTaskForm');
@@ -11,6 +11,7 @@ const searchTask = document.getElementById('searchTask');
 const loginBtn = document.getElementById('loginBtn');
 const registerBtn = document.getElementById('registerBtn');
 const logoutBtn = document.getElementById('logoutBtn');
+const userInfo = document.getElementById('userInfo');
 
 // Event Listeners
 addTaskForm.addEventListener('submit', addTask);
@@ -22,9 +23,13 @@ registerBtn.addEventListener('click', () => window.location.href = 'register.htm
 logoutBtn.addEventListener('click', logout);
 
 // Functions
+function isLoggedIn() {
+    return currentUser !== null;
+}
+
 function addTask(e) {
     e.preventDefault();
-    if (!currentUser) {
+    if (!isLoggedIn()) {
         alert('Please login to add tasks');
         return;
     }
@@ -38,17 +43,25 @@ function addTask(e) {
         title,
         description,
         deadline,
-        priority
+        priority,
+        userId: currentUser.id
     };
 
     tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     addTaskForm.reset();
     renderTasks();
 }
 
 function renderTasks() {
+    if (!isLoggedIn()) {
+        tasksList.innerHTML = '<p>Please login to view tasks</p>';
+        return;
+    }
+
+    const userTasks = tasks.filter(task => task.userId === currentUser.id);
     tasksList.innerHTML = '';
-    tasks.forEach(task => {
+    userTasks.forEach(task => {
         const taskElement = document.createElement('li');
         taskElement.classList.add('task');
         taskElement.innerHTML = `
@@ -66,17 +79,26 @@ function renderTasks() {
 }
 
 function editTask(id) {
-    // Implement edit functionality
-    console.log('Edit task', id);
+    const task = tasks.find(t => t.id === id);
+    if (task) {
+        // For simplicity, we'll just use prompt, but in a real app, you'd use a form
+        const newTitle = prompt('Edit task title:', task.title);
+        if (newTitle) {
+            task.title = newTitle;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTasks();
+        }
+    }
 }
 
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     renderTasks();
 }
 
 function filterAndSortTasks() {
-    let filteredTasks = [...tasks];
+    let filteredTasks = tasks.filter(task => task.userId === currentUser.id);
 
     // Filter by priority
     const priorityFilter = filterPriority.value;
@@ -121,5 +143,29 @@ function filterAndSortTasks() {
     });
 }
 
+function logout() {
+    localStorage.removeItem('currentUser');
+    currentUser = null;
+    renderTasks();
+    updateUI();
+}
+
+function updateUI() {
+    if (isLoggedIn()) {
+        loginBtn.style.display = 'none';
+        registerBtn.style.display = 'none';
+        logoutBtn.style.display = 'block';
+        addTaskForm.style.display = 'block';
+        userInfo.textContent = `Welcome, ${currentUser.username}!`;
+    } else {
+        loginBtn.style.display = 'block';
+        registerBtn.style.display = 'block';
+        logoutBtn.style.display = 'none';
+        addTaskForm.style.display = 'none';
+        userInfo.textContent = '';
+    }
+}
+
 // Initial render
+updateUI();
 renderTasks();

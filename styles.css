@@ -354,6 +354,15 @@ input {
 .tasks-section {
     margin-bottom: 2rem;
 }
+.dashboard-main > a > button {
+    color: var(--white);
+    background-color: var(--blue);
+    border: none;
+    /* width: 100%; */
+    font-weight: bold;
+    font-size: 1.0rem;
+    height: 50px;
+}
 
 .settings-panel {
     position: fixed;
@@ -432,6 +441,10 @@ body.dark-mode {
         width: 100%;
     }
 
+    .dashboard-main {
+        gap: 50px;
+    }
+
     .settings-panel {
         width: 100%;
         right: -100%;
@@ -481,5 +494,9 @@ body.dark-mode {
         width: 70px;
         height: 28px;
         font-size: 0.8rem;
+    }
+
+    .dashboard-main {
+        gap: 30px;
     }
 }

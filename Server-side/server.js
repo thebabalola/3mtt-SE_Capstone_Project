@@ -1,16 +1,15 @@
+const { User, Task, userOperations, taskOperations } = require('./schema');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { User, Task, userOperations, taskOperations } = require('./schema');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-
-// Mock database (replace with actual database integration)
-const users = [];
-const tasks = [];
 
 // Middleware for JWT authentication
 const authenticateToken = (req, res, next) => {
@@ -30,8 +29,7 @@ const authenticateToken = (req, res, next) => {
 app.post('/register', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        const user = { id: Date.now(), username: req.body.username, password: hashedPassword };
-        users.push(user);
+        const user = userOperations.create(req.body.username, hashedPassword);
         res.status(201).send('User registered successfully');
     } catch {
         res.status(500).send('Error registering user');
@@ -40,7 +38,7 @@ app.post('/register', async (req, res) => {
 
 // User login
 app.post('/login', async (req, res) => {
-    const user = users.find(user => user.username === req.body.username);
+    const user = userOperations.findByUsername(req.body.username);
     if (user == null) {
         return res.status(400).send('Cannot find user');
     }
@@ -58,29 +56,26 @@ app.post('/login', async (req, res) => {
 
 // CRUD operations for tasks
 app.get('/tasks', authenticateToken, (req, res) => {
-    res.json(tasks.filter(task => task.userId === req.user.id));
+    res.json(taskOperations.findByUserId(req.user.id));
 });
 
 app.post('/tasks', authenticateToken, (req, res) => {
-    const task = { id: Date.now(), ...req.body, userId: req.user.id };
-    tasks.push(task);
+    const task = taskOperations.create(req.user.id, req.body.title, req.body.description, req.body.deadline, req.body.priority);
     res.status(201).json(task);
 });
 
 app.put('/tasks/:id', authenticateToken, (req, res) => {
-    const taskIndex = tasks.findIndex(task => task.id === parseInt(req.params.id) && task.userId === req.user.id);
-    if (taskIndex > -1) {
-        tasks[taskIndex] = { ...tasks[taskIndex], ...req.body };
-        res.json(tasks[taskIndex]);
+    const updatedTask = taskOperations.update(req.params.id, req.body);
+    if (updatedTask) {
+        res.json(updatedTask);
     } else {
         res.status(404).send('Task not found');
     }
 });
 
 app.delete('/tasks/:id', authenticateToken, (req, res) => {
-    const taskIndex = tasks.findIndex(task => task.id === parseInt(req.params.id) && task.userId === req.user.id);
-    if (taskIndex > -1) {
-        tasks.splice(taskIndex, 1);
+    const deleted = taskOperations.delete(req.params.id);
+    if (deleted) {
         res.status(204).send();
     } else {
         res.status(404).send('Task not found');

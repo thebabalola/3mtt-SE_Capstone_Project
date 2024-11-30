@@ -24,13 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function handleLogin(email, password) {
-    // Here you would typically send a request to your server to authenticate the user
-    console.log('Login attempt', { email, password });
-    
-    // For demo purposes, we'll just set a token in localStorage
-    localStorage.setItem('token', 'demo_token');
+    // Simulating a successful login
+    const user = {
+        email: email,
+        name: "User Name", // You would get this from your backend
+        id: "user123" // You would get a unique ID from your backend
+    };
+    localStorage.setItem('user', JSON.stringify(user));
     alert('Login successful!');
-    // Redirect to dashboard
     window.location.href = '/userdash_page/userdash.html';
 }
 
@@ -40,12 +41,13 @@ function handleRegister(username, email, password, confirmPassword) {
         return;
     }
     
-    // Here you would typically send a request to your server to register the user
-    console.log('Register attempt', { username, email, password });
-    
-    // For demo purposes, we'll just set a token in localStorage
-    localStorage.setItem('token', 'demo_token');
+    // Simulating a successful registration
+    const user = {
+        email: email,
+        name: username,
+        id: "user" + Date.now() // Creating a unique ID
+    };
+    localStorage.setItem('user', JSON.stringify(user));
     alert('Registration successful!');
-    // Redirect to dashboard
     window.location.href = '/userdash_page/userdash.html';
 }
